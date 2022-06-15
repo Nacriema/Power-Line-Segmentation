@@ -83,3 +83,8 @@ Test: 440 images -> 220 records
 Train: 1810 images -> 905 records
 Val: 218 images -> 109 records
 ```
+
+Vậy là trong dữ liệu dư thừa ra 8 bản ghi không thuộc loại nào, bỏ qua mấy cái đó 
+
+- [ ] Xây dựng mô hình cho cái thuật toán PowerLine segmentation. Tìm kiếm model thực hiện tốt điều này. Mình sẽ chọn 
+UNET++ (backbone Resnet-34) 
