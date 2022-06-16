@@ -88,3 +88,5 @@ Vậy là trong dữ liệu dư thừa ra 8 bản ghi không thuộc loại nào
 
 - [ ] Xây dựng mô hình cho cái thuật toán PowerLine segmentation. Tìm kiếm model thực hiện tốt điều này. Mình sẽ chọn 
 UNET++ (backbone Resnet-34) 
+
+![img.png](img.png)
