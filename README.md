@@ -92,3 +92,18 @@ UNET++ (backbone Resnet-34)
 ![img.png](img.png)
 
 - [x] Xây dựng DataLoader cho segmentation task, kiểm tra chúng.
+- [x] Viết script train model.
+- [x] Sau khi đẩy dữ liệu full lên trên Drive, thì mình tính toán giá trị trung bình mean và std của toàn bộ dữ liệu trên đó thử:
+Kết quả sẽ được note ở đây: 
+
+![img_1.png](img_1.png)
+
+> Kết quả: 
+> * Mean: tensor([0.4616, 0.4506, 0.4154]) 
+> * Std: tensor([0.2368, 0.2339, 0.2415])
+
+Tuy nhiên, ta cũng nên thử mean và std từ ImageNet, do ta tái sử dụng lại Resnet pretrained: 
+> * Mean: [0.485, 0.456, 0.406]
+> * Std: [0.229, 0.224, 0.225]
+
+- [ ] Làm cho quá trình train trở nên `deterministic`
