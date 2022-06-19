@@ -106,11 +106,10 @@ Tuy nhiên, ta cũng nên thử mean và std từ ImageNet, do ta tái sử dụ
 > * Mean: [0.485, 0.456, 0.406]
 > * Std: [0.229, 0.224, 0.225]
 
-- [ ] Suy nghĩ cách customize hàm `save_checkpoint(self, val_loss, model)` của thằng `EarlyStopping` sao cho nó sử dụng tất 
+- [x] Suy nghĩ cách customize hàm `save_checkpoint(self, val_loss, model)` của thằng `EarlyStopping` sao cho nó sử dụng tất 
 cả các trường như thằng `docExtractor` vậy:
 
-> 
-- [ ] Sử dụng `earlystoping` để có thể save the best model
+- [x] Sử dụng `earlystoping` để có thể save the best model
 
 > Ý tưởng của eary stopping: 
 > 
@@ -119,4 +118,13 @@ cả các trường như thằng `docExtractor` vậy:
 > * B3: Ngay sau khi thực hiện bước 2, kiểm tra xem thử cái trạng thái của `early_stopping` nó như thế nào `if early_stopping.early_stop:`, nếu 
 > nó báo cần kết thúc thì ta kết thúc và break vòng lặp train.
 
+- [x] Kiểm tra mật độ phân phối dữ liệu trên toàn bộ data set, dữ liệu của mình là cực kỳ `imbalance`: 
+![img_2.png](img_2.png)
+```text
+RESULT: tensor([820755889,  17900111])
+WEIGHT (1./RESULT): tensor([1.2184e-09, 5.5866e-08]) 
+```
+- [x] Test thử việc truyền weight class vào trong `CrossEntropyLoss`, kết quả có vẻ khả quan đấy !
+![img_3.png](img_3.png)
+- [ ] Hiệu chỉnh code lần cuối cùng rồi đẩy code hoàn chỉnh lên trên đó, sau đó thực hiện train model với full-data
 - [ ] Làm cho quá trình train trở nên `deterministic`
