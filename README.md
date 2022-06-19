@@ -106,4 +106,17 @@ Tuy nhiên, ta cũng nên thử mean và std từ ImageNet, do ta tái sử dụ
 > * Mean: [0.485, 0.456, 0.406]
 > * Std: [0.229, 0.224, 0.225]
 
+- [ ] Suy nghĩ cách customize hàm `save_checkpoint(self, val_loss, model)` của thằng `EarlyStopping` sao cho nó sử dụng tất 
+cả các trường như thằng `docExtractor` vậy:
+
+> 
+- [ ] Sử dụng `earlystoping` để có thể save the best model
+
+> Ý tưởng của eary stopping: 
+> 
+> * B1: Trước khi train model, khởi tạo `early_stopping = EarlyStopping()`
+> * B2: Tại mỗi check point mà `val_stat_interval` gây ra, tính toán `validation loss`, sau đó record nó vào `early_stopping` bằng cách `early_stopping(valid_loss, model)`
+> * B3: Ngay sau khi thực hiện bước 2, kiểm tra xem thử cái trạng thái của `early_stopping` nó như thế nào `if early_stopping.early_stop:`, nếu 
+> nó báo cần kết thúc thì ta kết thúc và break vòng lặp train.
+
 - [ ] Làm cho quá trình train trở nên `deterministic`
