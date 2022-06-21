@@ -14,6 +14,7 @@ import numpy as np
 import torch
 import matplotlib.pyplot as plt
 from torchvision import utils
+from . import coerce_to_path_and_check_exist, get_files_from_dir
 
 
 def resize(img, size, keep_aspect_ratio=True, resample=Image.ANTIALIAS):
@@ -55,3 +56,18 @@ def show_batch(sample_batched):
     ground_grid = utils.make_grid(torch.unsqueeze(ground_batch, dim=1), nrow=batch_size)
     ax[1].imshow(ground_grid.numpy().transpose((1, 2, 0)))
     ax[1].set_title("Ground truth batch from dataloader")
+
+
+class LabeledArray2Image:
+    """Convert 2D labeled array to an image given a label_color_mapping"""
+    def __init__(self, input_dir):
+        # self.input_dir = coerce_to_path_and_check_exist(input_dir)
+        # self.files = get_files_from_dir(self.input_dir, valid_extensions='npy')
+        pass
+
+    @staticmethod
+    def convert(arr, label_color_mapping):
+        res = np.zeros(arr.shape + (3,), dtype=np.uint8)
+        for label, color in label_color_mapping.items():
+            res[arr == label] = color
+        return Image.fromarray(res)
