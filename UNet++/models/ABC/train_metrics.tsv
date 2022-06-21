@@ -1,0 +1,5 @@
+iteration	epoch	batch	train_loss	train_time_per_img
+5	1	5	0.6633	0.4302
+10	1	10	0.5822	0.1771
+15	2	5	0.4673	0.2783
+20	2	10	0.4903	0.1768
