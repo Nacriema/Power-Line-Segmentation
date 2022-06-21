@@ -1,0 +1,2 @@
+overall_acc	avg_acc	weighted_mean_iou	avg_iou	iou_class_0	iou_class_1
+0.9712	0.5609	0.9600	0.5136	0.9712	0.0561

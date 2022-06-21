@@ -46,7 +46,8 @@ class NestedUnet(nn.Module):
 
         # Get the pretrained weights for resnet to make the model backbone
         self.enc_name = kwargs.get('encoder_name', 'resnet34')
-        resnet = get_resnet_model(self.enc_name)(pretrained=True, progress=False)
+        pretrained = kwargs.get('pretrained_encoder', True)
+        resnet = get_resnet_model(self.enc_name)(pretrained=pretrained, progress=False)
 
         # Build the net structure based on the component of resnet above !
         # I applied the First conv and pooling of ResNet as the first conv

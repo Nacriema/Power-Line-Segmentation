@@ -38,6 +38,9 @@ model:
         # This params need for the group norm instead
         num_groups: 32
 
+    # This will take 2 effect: 1. When training, 2. When testing
+    pretrained_encoder: True
+
 
 # Training configs part
 training:
