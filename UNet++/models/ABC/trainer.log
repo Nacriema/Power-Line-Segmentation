@@ -222,3 +222,61 @@
 [2022-06-21 10:03:44,878] INFO: Dataset TTPLA_Test instantiated with {'restricted_labels': [1], 'img_size': [640, 360], 'data_distribution': {'mean': [0.4616, 0.4506, 0.4154], 'std': [0.2368, 0.2339, 0.2415]}, 'data_augmentation': True, 'blur_radius_range': [0.2, 2], 'brightness_factor_range': [0.9, 1.1], 'contrast_factor_range': [0.5, 2], 'rotation_angle_range': [-10, 10], 'sampling_ratio_range': [1, 1], 'sampling_max_nb_pixels': 3500000.0}
 [2022-06-21 10:03:44,878] INFO: Found 2 classes, 10 train samples, 10 val samples
 [2022-06-21 10:03:44,879] INFO: Dataloaders instantiated with batch_size=1 and n_worker=0
+[2022-06-21 10:22:50,287] INFO: Trainer initialization: run directory is /media/hp/01D576CEBCC511F0/Pytorch/Power-Line-Segmentation/UNet++/models/ABC
+[2022-06-21 10:22:50,294] INFO: Config /media/hp/01D576CEBCC511F0/Pytorch/Power-Line-Segmentation/UNet++/configs/test.yml copied to run directory.
+[2022-06-21 10:22:50,377] INFO: Using cuda device, nb_device is 1
+[2022-06-21 10:22:50,384] INFO: Dataset TTPLA_Test instantiated with {'restricted_labels': [1], 'img_size': [640, 360], 'data_distribution': {'mean': [0.4616, 0.4506, 0.4154], 'std': [0.2368, 0.2339, 0.2415]}, 'data_augmentation': True, 'blur_radius_range': [0.2, 2], 'brightness_factor_range': [0.9, 1.1], 'contrast_factor_range': [0.5, 2], 'rotation_angle_range': [-10, 10], 'sampling_ratio_range': [1, 1], 'sampling_max_nb_pixels': 3500000.0}
+[2022-06-21 10:22:50,390] INFO: Found 2 classes, 10 train samples, 10 val samples
+[2022-06-21 10:22:50,392] INFO: Dataloaders instantiated with batch_size=1 and n_worker=0
+[2022-06-21 10:23:15,289] INFO: Using model resnet34-unet++ with kwargs {'norm_layer': {'name': 'batch_norm', 'momentum': 0.1, 'affine': True, 'track_running_stats': True, 'num_groups': 32}}
+[2022-06-21 10:23:15,401] INFO: Number of trainable parameters: 26,611,268
+[2022-06-21 10:23:15,405] INFO: Using optimizer adam with kwargs {'lr': 0.001, 'weight_decay': 1e-06}
+[2022-06-21 10:23:15,408] INFO: Using scheduler multi_step with parameters {'gamma': 0.5, 'milestones': [30, 60, 80]}
+[2022-06-21 10:23:15,424] INFO: Using loss CrossEntropyLoss() with class weight [1.2184e-09, 5.5866e-08]
+[2022-06-21 10:23:22,332] INFO: Epoch [1/2], Iter [5/10]: train_loss = 0.6381, time/img = 0.5086s
+[2022-06-21 10:23:28,205] INFO: Epoch [1/2], Iter [5/10]: val_loss = 0.6894
+[2022-06-21 10:23:28,283] INFO: Val metrics: overall_acc = 0.9827, avg_acc = 0.5000, weighted_mean_iou = 0.9658, avg_iou = 0.4914, iou_class_0 = 0.9827, iou_class_1 = 0.0000
+[2022-06-21 10:23:28,409] INFO: Validation loss decreased ( inf --->  0.689404). Saving model ...
+[2022-06-21 10:23:48,259] INFO: Epoch [1/2], Iter [10/10]: train_loss = 0.5115, time/img = 0.4152s
+[2022-06-21 10:23:53,810] INFO: Epoch [1/2], Iter [10/10]: val_loss = 0.6921
+[2022-06-21 10:23:53,811] INFO: Val metrics: overall_acc = 0.9814, avg_acc = 0.5052, weighted_mean_iou = 0.9647, avg_iou = 0.4962, iou_class_0 = 0.9814, iou_class_1 = 0.0111
+[2022-06-21 10:23:53,875] INFO: EarlyStopping counter: 1 out of 5
+[2022-06-21 10:23:53,886] INFO: Epoch [1/2], Iter [1/10]: LR updated, lr = [0.001]
+[2022-06-21 10:23:57,590] INFO: Epoch [2/2], Iter [5/10]: train_loss = 0.4879, time/img = 0.1804s
+[2022-06-21 10:24:01,439] INFO: Epoch [2/2], Iter [5/10]: val_loss = 0.6851
+[2022-06-21 10:24:01,441] INFO: Val metrics: overall_acc = 0.9420, avg_acc = 0.5382, weighted_mean_iou = 0.9262, avg_iou = 0.4882, iou_class_0 = 0.9419, iou_class_1 = 0.0345
+[2022-06-21 10:24:01,443] INFO: Validation loss decreased ( 0.689404 --->  0.685119). Saving model ...
+[2022-06-21 10:24:24,667] INFO: Epoch [2/2], Iter [10/10]: train_loss = 0.4394, time/img = 0.5276s
+[2022-06-21 10:24:31,365] INFO: Epoch [2/2], Iter [10/10]: val_loss = 0.6619
+[2022-06-21 10:24:31,386] INFO: Val metrics: overall_acc = 0.9417, avg_acc = 0.5353, weighted_mean_iou = 0.9259, avg_iou = 0.4872, iou_class_0 = 0.9416, iou_class_1 = 0.0328
+[2022-06-21 10:24:31,420] INFO: Validation loss decreased ( 0.685119 --->  0.661885). Saving model ...
+[2022-06-21 10:24:36,348] INFO: Training run is over !
+[2022-06-21 11:01:01,766] INFO: Trainer initialization: run directory is /media/hp/01D576CEBCC511F0/Pytorch/Power-Line-Segmentation/UNet++/models/ABC
+[2022-06-21 11:01:01,768] INFO: Config /media/hp/01D576CEBCC511F0/Pytorch/Power-Line-Segmentation/UNet++/configs/test.yml copied to run directory.
+[2022-06-21 11:01:01,865] INFO: Using cuda device, nb_device is 1
+[2022-06-21 11:01:01,881] INFO: Dataset TTPLA_Test instantiated with {'restricted_labels': [1], 'img_size': [640, 360], 'data_distribution': {'mean': [0.4616, 0.4506, 0.4154], 'std': [0.2368, 0.2339, 0.2415]}, 'data_augmentation': True, 'blur_radius_range': [0.2, 2], 'brightness_factor_range': [0.9, 1.1], 'contrast_factor_range': [0.5, 2], 'rotation_angle_range': [-10, 10], 'sampling_ratio_range': [1, 1], 'sampling_max_nb_pixels': 3500000.0}
+[2022-06-21 11:01:01,882] INFO: Found 2 classes, 10 train samples, 10 val samples
+[2022-06-21 11:01:01,885] INFO: Dataloaders instantiated with batch_size=1 and n_worker=0
+[2022-06-21 11:01:22,973] INFO: Using model resnet34-unet++ with kwargs {'norm_layer': {'name': 'batch_norm', 'momentum': 0.1, 'affine': True, 'track_running_stats': True, 'num_groups': 32}, 'pretrained_encoder': True}
+[2022-06-21 11:01:23,027] INFO: Number of trainable parameters: 26,611,268
+[2022-06-21 11:01:23,031] INFO: Using optimizer adam with kwargs {'lr': 0.001, 'weight_decay': 1e-06}
+[2022-06-21 11:01:23,053] INFO: Using scheduler multi_step with parameters {'gamma': 0.5, 'milestones': [30, 60, 80]}
+[2022-06-21 11:01:23,077] INFO: Using loss CrossEntropyLoss() with class weight [1.2184e-09, 5.5866e-08]
+[2022-06-21 11:01:29,453] INFO: Epoch [1/2], Iter [5/10]: train_loss = 0.7408, time/img = 0.5034s
+[2022-06-21 11:01:35,444] INFO: Epoch [1/2], Iter [5/10]: val_loss = 0.5706
+[2022-06-21 11:01:35,469] INFO: Val metrics: overall_acc = 0.9617, avg_acc = 0.6005, weighted_mean_iou = 0.9466, avg_iou = 0.5271, iou_class_0 = 0.9616, iou_class_1 = 0.0926
+[2022-06-21 11:01:35,547] INFO: Validation loss decreased ( inf --->  0.570642). Saving model ...
+[2022-06-21 11:01:53,399] INFO: Epoch [1/2], Iter [10/10]: train_loss = 0.5858, time/img = 0.2404s
+[2022-06-21 11:01:59,256] INFO: Epoch [1/2], Iter [10/10]: val_loss = 0.6765
+[2022-06-21 11:01:59,284] INFO: Val metrics: overall_acc = 0.9789, avg_acc = 0.5262, weighted_mean_iou = 0.9627, avg_iou = 0.5118, iou_class_0 = 0.9789, iou_class_1 = 0.0448
+[2022-06-21 11:01:59,287] INFO: EarlyStopping counter: 1 out of 5
+[2022-06-21 11:01:59,315] INFO: Epoch [1/2], Iter [1/10]: LR updated, lr = [0.001]
+[2022-06-21 11:02:02,267] INFO: Epoch [2/2], Iter [5/10]: train_loss = 0.5063, time/img = 0.1779s
+[2022-06-21 11:02:06,165] INFO: Epoch [2/2], Iter [5/10]: val_loss = 0.6545
+[2022-06-21 11:02:06,173] INFO: Val metrics: overall_acc = 0.9723, avg_acc = 0.5739, weighted_mean_iou = 0.9570, avg_iou = 0.5317, iou_class_0 = 0.9722, iou_class_1 = 0.0913
+[2022-06-21 11:02:06,190] INFO: EarlyStopping counter: 2 out of 5
+[2022-06-21 11:02:09,334] INFO: Epoch [2/2], Iter [10/10]: train_loss = 0.4616, time/img = 0.1839s
+[2022-06-21 11:02:13,514] INFO: Epoch [2/2], Iter [10/10]: val_loss = 0.6121
+[2022-06-21 11:02:13,529] INFO: Val metrics: overall_acc = 0.9156, avg_acc = 0.7181, weighted_mean_iou = 0.9007, avg_iou = 0.5050, iou_class_0 = 0.9149, iou_class_1 = 0.0951
+[2022-06-21 11:02:13,548] INFO: EarlyStopping counter: 3 out of 5
+[2022-06-21 11:02:13,563] INFO: Training run is over !

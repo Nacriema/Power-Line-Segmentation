@@ -136,7 +136,7 @@ WEIGHT (1./RESULT): tensor([1.2184e-09, 5.5866e-08])
   - [ ] Thêm vào `Tensorboard logs`: 
     - [ ] Xem xét được đường cong huấn luyện `train_loss` và `validation_loss`
     - [ ] Xem xét được performance của model tại điểm `validation` bằng cách xem qua ảnh dự đoán của model trên tensorboard (Cái ý này có vẻ dễ thực hiện hơn ý đầu đấy)
-  - [ ] Viết `tester.py` script: script này chịu trách nhiệm test performance của model trên tập ảnh test sau khi hoàn tất quá trình train. 
+  - [x] Viết `tester.py` script: script này chịu trách nhiệm test performance của model trên tập ảnh test sau khi hoàn tất quá trình train. 
   - [x] Tái tổ chức lại cấu trúc file sao cho hợp lý nhất (Bao gồm cả cấu trúc code, import bla...)
   - [x] Viết thêm `.gitignore` để tránh trường hợp đẩy file có dung lượng lớn lên lên trên Github. 
   - [ ] Tìm hiểu thêm một tính năng nào đó hay ho hỗ trợ code từ github (Ví dụ: Bot, CodeCoverage, ... ) để cái thiện code. (Đã thực hiện với CodeCoverage,...)
