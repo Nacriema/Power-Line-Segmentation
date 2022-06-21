@@ -16,6 +16,7 @@ import numpy as np
 import yaml
 import shutil
 import time
+import argparse
 
 # TODO: Is there a better way of reducing these import prefix src. ?
 from src.utils import coerce_to_path_and_check_exist, coerce_to_path_and_create_dir
@@ -375,7 +376,14 @@ class Trainer:
 
 
 if __name__ == '__main__':
-    config = coerce_to_path_and_check_exist(CONFIGS_PATH / 'test.yml')
-    run_dir = MODELS_PATH / 'ABC'
+    parser = argparse.ArgumentParser(description="Pipeline to train a Neural Network model specified by a YML config")
+    parser.add_argument("-t", "--tag", nargs="?", type=str, help="Model tag of the experiment, this will create a "
+                                                                 "folder models/TAG", required=True)
+    parser.add_argument("-c", "--config", nargs="?", type=str, help="Config file name", required=True)
+    args = parser.parse_args()
+
+    config = coerce_to_path_and_check_exist(CONFIGS_PATH / args.config)
+    run_dir = MODELS_PATH / args.tag
+
     trainer = Trainer(config, run_dir=run_dir)
     trainer.run()
