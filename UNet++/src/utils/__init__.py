@@ -20,13 +20,13 @@ def coerce_to_path_and_check_exist(path: str) -> Path:
     return path
 
 
-def coerce_to_path_and_create_dir(path: str) -> Path:
+def coerce_to_path_and_create_dir(path: Union[str, Path]) -> Path:
     path = Path(path)
     path.mkdir(parents=True, exist_ok=True)
     return path
 
 
-def get_files_from_dir(dir_path: str, valid_extensions: Union[List[str], str] = None, recursive: bool = False, sort: bool = False):
+def get_files_from_dir(dir_path: Union[str, Path], valid_extensions: Union[List[str], str] = None, recursive: bool = False, sort: bool = False):
     # 1. Check the path is exist
     path = coerce_to_path_and_check_exist(dir_path)
     # 2. Find all files
