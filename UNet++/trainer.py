@@ -30,6 +30,8 @@ from src.loss import get_loss
 from src.utils.path import CONFIGS_PATH, MODELS_PATH, MODEL_FILE
 from src.utils.logger import get_logger, print_info
 
+from torch.utils.tensorboard import SummaryWriter
+
 PRINT_TRAIN_STAT_FMT = "Epoch [{}/{}], Iter [{}/{}]: train_loss = {:.4f}, time/img = {:.4f}s"
 PRINT_VAL_STAT_FMT = "Epoch [{}/{}], Iter [{}/{}]: val_loss = {:.4f}"
 PRINT_LR_UPD_FMT = "Epoch [{}/{}], Iter [{}/{}]: LR updated, lr = {}"
@@ -47,6 +49,8 @@ class Trainer:
         # Create the run dir directory, this is inside the /models folder
         self.run_dir = coerce_to_path_and_create_dir(run_dir)
         self.logger = get_logger(log_dir=self.run_dir, name="trainer")
+
+        self.writer = SummaryWriter()   # By default, use the runs directory
         self.print_and_log_info("Trainer initialization: run directory is {}".format(run_dir))
 
         shutil.copy(src=self.config_path, dst=self.run_dir)
@@ -310,6 +314,9 @@ class Trainer:
             f.write("{}\t{}\t{}\t{:.4f}\t{:.4f}\n"
                     .format(cur_iter, epoch, batch, self.train_loss.avg, self.train_time.avg))
 
+        # Writer add scalars, write the train_loss.avg to Tensorboard
+        self.writer.add_scalars("Loss", {"Train": self.train_loss.avg}, global_step=cur_iter)
+
         self.train_loss.reset()
         self.train_time.reset()
 
@@ -323,6 +330,9 @@ class Trainer:
         with open(self.val_metrics_path, mode="a") as f:
             f.write("{}\t{}\t{}\t{:.4f}\t".format(cur_iter, epoch, batch, self.val_loss.avg) +
                     "\t".join(map("{:.4f}".format, metrics.values())) + "\n")
+
+        # Writer add scalars, write the val_loss.avg to Tensorboard
+        self.writer.add_scalars("Loss", {"Validation": self.val_loss.avg}, global_step=cur_iter)
 
         # Due to the @property declare above, use self.score_name instead of self.val_metrics.score_name
         self.val_current_score = metrics[self.score_name]
@@ -386,3 +396,6 @@ if __name__ == '__main__':
 
     trainer = Trainer(config, run_dir=run_dir)
     trainer.run()
+
+    # Sample run
+    # python3 -m trainer -t "ABC" -c "test.yml"
