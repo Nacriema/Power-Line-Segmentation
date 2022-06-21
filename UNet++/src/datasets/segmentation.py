@@ -53,7 +53,7 @@ class AbstractSegDataset(TorchDataset):
     def root_path(self):
         return DATASET_PATH / self.name
 
-    def __init__(self, split: str, restricted_labels=None, normalize=None, **kwargs):
+    def __init__(self, split: str, restricted_labels=None, **kwargs):
         """
         :param split: partition of dataset (train, test or val)
         :param restricted_labels:

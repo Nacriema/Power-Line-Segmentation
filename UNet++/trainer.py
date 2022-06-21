@@ -75,10 +75,9 @@ class Trainer:
 
         # Get train and val dataset
         # TODO: Design and read the dataset normalization
-        normalize_info = {'mean': np.array([]), 'std': np.array([])}
-        train_dataset = get_dataset(self.dataset_name)(split="train", normalize=None, **self.dataset_kwargs)
+        train_dataset = get_dataset(self.dataset_name)(split="train", **self.dataset_kwargs)
 
-        val_dataset = get_dataset(self.dataset_name)(split="val", normalize=None, **self.dataset_kwargs)
+        val_dataset = get_dataset(self.dataset_name)(split="val", **self.dataset_kwargs)
 
         self.restricted_labels = sorted(self.dataset_kwargs["restricted_labels"])
 
