@@ -89,14 +89,14 @@ Vậy là trong dữ liệu dư thừa ra 8 bản ghi không thuộc loại nào
 - [x] Xây dựng mô hình cho cái thuật toán PowerLine segmentation. Tìm kiếm model thực hiện tốt điều này. Mình sẽ chọn 
 UNET++ (backbone Resnet-34) 
 
-![img.png](img.png)
+![img.png](docs/images/img.png)
 
 - [x] Xây dựng DataLoader cho segmentation task, kiểm tra chúng.
 - [x] Viết script train model.
 - [x] Sau khi đẩy dữ liệu full lên trên Drive, thì mình tính toán giá trị trung bình mean và std của toàn bộ dữ liệu trên đó thử:
 Kết quả sẽ được note ở đây: 
 
-![img_1.png](img_1.png)
+![img_1.png](docs/images/img_1.png)
 
 > Kết quả: 
 > * Mean: tensor([0.4616, 0.4506, 0.4154]) 
@@ -119,12 +119,28 @@ cả các trường như thằng `docExtractor` vậy:
 > nó báo cần kết thúc thì ta kết thúc và break vòng lặp train.
 
 - [x] Kiểm tra mật độ phân phối dữ liệu trên toàn bộ data set, dữ liệu của mình là cực kỳ `imbalance`: 
-![img_2.png](img_2.png)
+![img_2.png](docs/images/img_2.png)
 ```text
 RESULT: tensor([820755889,  17900111])
 WEIGHT (1./RESULT): tensor([1.2184e-09, 5.5866e-08]) 
 ```
 - [x] Test thử việc truyền weight class vào trong `CrossEntropyLoss`, kết quả có vẻ khả quan đấy !
-![img_3.png](img_3.png)
+![img_3.png](docs/images/img_3.png)
 - [ ] Hiệu chỉnh code lần cuối cùng rồi đẩy code hoàn chỉnh lên trên đó, sau đó thực hiện train model với full-data
-- [ ] Làm cho quá trình train trở nên `deterministic`
+  - [x] Thêm phần resume training 
+  - [x] Thêm vào logging, cải thiện format logging sao cho nó dễ đọc nhất có thể (Gợi ý sử dụng kiểu log message của PyImage Search)
+    - Loging bao gồm 2 phần: `Terminal log` và `File log` 
+    - Đối với `Terminal log`, mình sẽ sử dụng trick để điều chỉnh log (Bằng cách thêm các chỉ màu đặc biệt vào trước mỗi log string)
+    - Đối với `File log`, mình sẽ sứ dụng `logging` của python. 
+  - [x] Thêm vào trường `data_distribution` để normalize dữ liệu
+  - [ ] Thêm vào `Tensorboard logs`: 
+    - [ ] Xem xét được đường cong huấn luyện `train_loss` và `validation_loss`
+    - [ ] Xem xét được performance của model tại điểm `validation` bằng cách xem qua ảnh dự đoán của model trên tensorboard (Cái ý này có vẻ dễ thực hiện hơn ý đầu đấy)
+  - [ ] Viết testing script.
+  - [ ] Tái tổ chức lại cấu trúc file sao cho hợp lý nhất (Bao gồm cả cấu trúc code, import bla...)
+  - [ ] Viết thêm `.gitignore` để tránh trường hợp đẩy file có dung lượng lên lên trên Github. 
+  - [ ] Tìm hiểu thêm một tính năng nào đó hay ho hỗ trợ code từ github (Ví dụ: Bot, CodeCoverage, ... ) để cái thiện code.
+- [ ] Thực hiện train trên Colab, chú ý những điều sau:
+  - Mỗi lần chạy lại train ta sẽ mất hết dữ liệu bên trong `train_metrics.tsv` và `val_metrics.tsv`.
+- [ ] Làm cho quá trình train trở nên `deterministic`. (Cái này chắc chắn phải để cuối cùng, vì nó cần phải tìm hiểu thêm 
+nhiều thứ lắm mới có thể làm được)
