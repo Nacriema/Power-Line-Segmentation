@@ -12,7 +12,6 @@ Refs:
 import torch.cuda
 
 from torch.utils.data import DataLoader
-import numpy as np
 import yaml
 import shutil
 import time
