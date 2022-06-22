@@ -134,16 +134,30 @@ WEIGHT (1./RESULT): tensor([1.2184e-09, 5.5866e-08])
     - Đối với `File log`, mình sẽ sứ dụng `logging` của python. 
   - [x] Thêm vào trường `data_distribution` để normalize dữ liệu
   - [ ] Thêm vào `Tensorboard logs`: 
-    - [ ] Xem xét được đường cong huấn luyện `train_loss` và `validation_loss`
+    - [x] Xem xét được đường cong huấn luyện `train_loss` và `validation_loss`
     - [ ] Xem xét được performance của model tại điểm `validation` bằng cách xem qua ảnh dự đoán của model trên tensorboard (Cái ý này có vẻ dễ thực hiện hơn ý đầu đấy)
   - [x] Viết `tester.py` script: script này chịu trách nhiệm test performance của model trên tập ảnh test sau khi hoàn tất quá trình train. 
   - [x] Tái tổ chức lại cấu trúc file sao cho hợp lý nhất (Bao gồm cả cấu trúc code, import bla...)
+    - [x] Vấn đề lúc `save_state_dict`, mình muốn lưu thêm trường `val_loss_min` để lúc pretrain lại sử dụng nó để khởi 
+tạo biến record bên trong `EaryStopping`.
+
   - [x] Viết thêm `.gitignore` để tránh trường hợp đẩy file có dung lượng lớn lên lên trên Github. 
   - [ ] Tìm hiểu thêm một tính năng nào đó hay ho hỗ trợ code từ github (Ví dụ: Bot, CodeCoverage, ... ) để cái thiện code. (Đã thực hiện với CodeCoverage,...)
     - [x] Đã biết cách sử dụng `Code Coverage` để kiểm tra độ bao phủ của code trong một lần chạy fullflow. 
         > ![img.png](docs/images/img_4.png)
   - [x] Viết thêm `ArgumentParser` vào `trainer.py` script
+- [x] Thực hiện một số tính toán đơn giản dựa trên bộ dữ liệu để có thể có được cấu hình ok ban đầu cho file config: 
+  > Mình đã note sẵn trong file `first_try.yml` 
+- [ ] Vấn đề khó ở đây đó là handle cái vụ về model này, ta thấy rất khó khăn để mô hình học đc, nguyên nhân là do việc 
+không cân đối giữa các lớp với nhau. Đề xuất những hướng giải quyết: 
+  - [ ] Sau khi train xong với `CrossEntropyLoss`, sử dụng `fine-tune` bằng `LovasLoss`. 
+  - [ ] Sử dụng `FocalLoss` với `class weight`, `SoftDiceLoss`, hoặc là `JaccardLoss (IoU Loss)` 
+- [ ] Sử dụng `Optima` để tìm được bộ tham số khởi tạo chuẩn khi huấn luyện mô hình.
 - [ ] Thực hiện train trên Colab, chú ý những điều sau:
   - Mỗi lần chạy lại train ta sẽ mất hết dữ liệu bên trong `train_metrics.tsv` và `val_metrics.tsv`.
+  - **Mình cần ghi lại giá trị val_loss nhỏ nhất trước đó đã lưu được tại best-save, thiết kế lại load check point và thêm việc truyền tham số vào khi khởi tạo EarlyStopping instance**. (Ok, vấn đề đã được giải quyết !)
+    > ![img.png](img.png)
+    
+
 - [ ] Làm cho quá trình train trở nên `deterministic`. (Cái này chắc chắn phải để cuối cùng, vì nó cần phải tìm hiểu thêm 
 nhiều thứ lắm mới có thể làm được)
