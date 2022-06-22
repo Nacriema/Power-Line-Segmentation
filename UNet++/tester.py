@@ -14,6 +14,7 @@ from PIL import Image
 import yaml
 
 import torch
+from tqdm import tqdm
 
 from src.utils.logger import print_info
 from src.utils import coerce_to_path_and_check_exist, coerce_to_path_and_create_dir
@@ -67,7 +68,7 @@ class Tester:
             self.blend_dir = coerce_to_path_and_create_dir(self.output_dir / "blend")
 
     def run(self):
-        for image, label in self.dataset:
+        for i, (image, label) in enumerate(tqdm(self.dataset)):
             self.single_run(image, label)
         print_info("Probabilities and segmentation maps computed")
 
@@ -115,13 +116,16 @@ class Tester:
 
 
 if __name__ == '__main__':
-    run_dir = coerce_to_path_and_check_exist(MODELS_PATH / "ABC")
-    output_dir = run_dir / "test_{}".format("TTPLA_Test")
+    # run_dir = coerce_to_path_and_check_exist(MODELS_PATH / "ABC")
+    run_dir = coerce_to_path_and_check_exist(MODELS_PATH / "FirstModel")
+    # output_dir = run_dir / "test_{}".format("TTPLA_Test")
+    output_dir = run_dir / "test_{}".format("RealData")
     config_path = list(run_dir.glob("*.yml"))[0]
     with open(config_path) as fp:
         cfg = yaml.load(fp, Loader=yaml.FullLoader)
     dataset_kwargs = cfg["dataset"]
     dataset_kwargs.pop("name")
 
-    tester = Tester(output_dir, run_dir / MODEL_FILE, "TTPLA_Test", dataset_kwargs)
+    # tester = Tester(output_dir, run_dir / MODEL_FILE, "TTPLA_Test", dataset_kwargs)
+    tester = Tester(output_dir, run_dir / MODEL_FILE, "RealData", dataset_kwargs)
     tester.run()
