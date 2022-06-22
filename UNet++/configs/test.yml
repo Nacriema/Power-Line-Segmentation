@@ -64,7 +64,7 @@ training:
     loss:
         name: cross_entropy
         weight: [1.2184e-09, 5.5866e-08]
-    n_epoches: 2
+    n_epoches: 4
     # This is in iteration unit (number_of_iterations = number_of_batches that has beeb processed)
     # Ex: Test dataset train has 10 sample, batch_size = 1 and epochs = 2 => 20 iterations
     # Train_stat_interval = 5 -> Check the training loss: 20 / 5 = 4 times. Check OK
@@ -75,4 +75,4 @@ training:
     val_stat_interval: 5
     pretrained:
     # Resume use to continue training model, pass it with the model TAG folder name: models/TAG, if not given then train from beginning
-    resume:
+    resume: ABC
