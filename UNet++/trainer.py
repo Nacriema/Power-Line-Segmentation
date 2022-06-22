@@ -119,10 +119,6 @@ class Trainer:
         self.model_name = self.model_kwargs.pop("name")
         self.save_path = self.run_dir / MODEL_FILE
 
-        # Enable the EarlyStopping
-        self.early_stopping = EarlyStopping(patience=self.patience, verbose=True, path=self.save_path,
-                                            trace_func=self.print_and_log_info)
-
         model = get_model(self.model_name)(self.n_classes, **self.model_kwargs).to(self.device)
         self.model = torch.nn.DataParallel(model, device_ids=range(torch.cuda.device_count()))
         self.print_and_log_info("Using model {} with kwargs {}".format(self.model_name, self.model_kwargs))
@@ -170,12 +166,18 @@ class Trainer:
         assert not (checkpoint_path is not None and checkpoint_path_resume is not None)
 
         # Each load_from_tag change the self.start_epoch and self.start_batch value
+        self.val_loss_min = None
         if checkpoint_path is not None:
             self.load_from_tag(checkpoint_path)
         elif checkpoint_path_resume is not None:
             self.load_from_tag(checkpoint_path_resume, resume=True)
         else:
             self.start_epoch, self.start_batch = 1, 1
+
+        # Enable the EarlyStopping
+        self.early_stopping = EarlyStopping(patience=self.patience, verbose=True, path=self.save_path,
+                                            val_loss_min=self.val_loss_min,
+                                            trace_func=self.print_and_log_info)
 
         # Train metrics
         train_iter_interval = cfg["training"].get("train_stat_interval", self.n_epoches * self.n_batches // 200)
@@ -380,6 +382,7 @@ class Trainer:
             self.optimizer.load_state_dict(checkpoint["optimizer_state"])
             self.scheduler.load_state_dict(checkpoint["scheduler_state"])
             self.cur_lr = self.scheduler.get_last_lr()
+            self.val_loss_min = checkpoint["val_loss_min"]
         self.print_and_log_info("Checkpoint loaded at epoch {}, batch {}".format(self.start_epoch, self.start_batch))
 
 

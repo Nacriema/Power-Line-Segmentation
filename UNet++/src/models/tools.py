@@ -14,6 +14,7 @@ from torch import nn
 from collections import OrderedDict
 import torch
 import numpy as np
+from ..utils.logger import print_info
 
 
 def get_norm_layer(**kwargs):
@@ -52,7 +53,7 @@ def safe_model_state_dict(state_dict):
 # Link: https://github.com/Bjarten/early-stopping-pytorch/blob/master/pytorchtools.py
 class EarlyStopping:
     """Early stops the training if validation loss doesn't improve after a given patience."""
-    def __init__(self, patience=7, verbose=False, delta=0, path='checkpoint.pt', trace_func=print):
+    def __init__(self, patience=7, verbose=False, delta=0, path='checkpoint.pt', val_loss_min: int = None, trace_func=print):
         """
         :param patience: How long to wait after last time validation loss improved
         :param verbose: If True, print a message for each validation loss improvement
@@ -65,10 +66,16 @@ class EarlyStopping:
         self.counter = 0
         self.best_score = None
         self.early_stop = False
-        self.val_loss_min = np.Inf
+        if val_loss_min is not None:
+            self.val_loss_min = val_loss_min
+            self.best_score = - val_loss_min
+        else:
+            self.val_loss_min = np.Inf
+            self.best_score = None
         self.delta = delta
         self.path = path
         self.trace_func = trace_func
+        print_info(f"Early stopping instantiated with current val_loss_min: {self.val_loss_min}")
 
     def __call__(self, val_loss, state_dict):
         # val_loss is > 0  -> score < 0
@@ -93,6 +100,7 @@ class EarlyStopping:
         if self.verbose:
             self.trace_func(f'Validation loss decreased ({self.val_loss_min: .6f} ---> {val_loss: .6f}). Saving model '
                             f'...')
-
-        torch.save(state_dict, self.path)
         self.val_loss_min = val_loss
+        # Add val_loss_min to the state_dict before save
+        state_dict["val_loss_min"] = val_loss
+        torch.save(state_dict, self.path)
