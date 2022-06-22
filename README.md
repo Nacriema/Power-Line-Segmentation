@@ -156,7 +156,7 @@ không cân đối giữa các lớp với nhau. Đề xuất những hướng g
 - [ ] Thực hiện train trên Colab, chú ý những điều sau:
   - Mỗi lần chạy lại train ta sẽ mất hết dữ liệu bên trong `train_metrics.tsv` và `val_metrics.tsv`.
   - **Mình cần ghi lại giá trị val_loss nhỏ nhất trước đó đã lưu được tại best-save, thiết kế lại load check point và thêm việc truyền tham số vào khi khởi tạo EarlyStopping instance**. (Ok, vấn đề đã được giải quyết !)
-    > ![img.png](img.png)
+    > ![img.png](docs/images/img_5.png)
     
 
 - [ ] Làm cho quá trình train trở nên `deterministic`. (Cái này chắc chắn phải để cuối cùng, vì nó cần phải tìm hiểu thêm 
