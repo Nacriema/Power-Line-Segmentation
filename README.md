@@ -154,9 +154,12 @@ không cân đối giữa các lớp với nhau. Đề xuất những hướng g
   - [ ] Sử dụng `FocalLoss` với `class weight`, `SoftDiceLoss`, hoặc là `JaccardLoss (IoU Loss)` 
 - [ ] Sử dụng `Optima` để tìm được bộ tham số khởi tạo chuẩn khi huấn luyện mô hình.
 - [ ] Thực hiện train trên Colab, chú ý những điều sau:
-  - Mỗi lần chạy lại train ta sẽ mất hết dữ liệu bên trong `train_metrics.tsv` và `val_metrics.tsv`.
-  - **Mình cần ghi lại giá trị val_loss nhỏ nhất trước đó đã lưu được tại best-save, thiết kế lại load check point và thêm việc truyền tham số vào khi khởi tạo EarlyStopping instance**. (Ok, vấn đề đã được giải quyết !)
+  - [ ] Mỗi lần chạy lại train ta sẽ mất hết dữ liệu bên trong `train_metrics.tsv` và `val_metrics.tsv`.
+  - [x] **Mình cần ghi lại giá trị val_loss nhỏ nhất trước đó đã lưu được tại best-save, thiết kế lại load check point và thêm việc truyền tham số vào khi khởi tạo EarlyStopping instance**. (Ok, vấn đề đã được giải quyết !)
     > ![img.png](docs/images/img_5.png)
+  - [ ] Tiếp tục train trên colab !
+  - [ ] Vấn đề hiện tại với model của mình là train hoài mà nó không xuống được nữa, mặc dù nó đang làm khá tốt. Mình nên 
+cân nhắc việc `FineTune` với cái `REDUCELRONPLATEAU` của Pytorch để tự động điều chỉnh giá trị learning rate khi mà thấy không ổn. 
     
 
 - [ ] Làm cho quá trình train trở nên `deterministic`. (Cái này chắc chắn phải để cuối cùng, vì nó cần phải tìm hiểu thêm 
