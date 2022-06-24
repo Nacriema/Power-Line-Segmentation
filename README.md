@@ -160,7 +160,36 @@ không cân đối giữa các lớp với nhau. Đề xuất những hướng g
   - [ ] Tiếp tục train trên colab !
   - [ ] Vấn đề hiện tại với model của mình là train hoài mà nó không xuống được nữa, mặc dù nó đang làm khá tốt. Mình nên 
 cân nhắc việc `FineTune` với cái `REDUCELRONPLATEAU` của Pytorch để tự động điều chỉnh giá trị learning rate khi mà thấy không ổn. 
-    
 
 - [ ] Làm cho quá trình train trở nên `deterministic`. (Cái này chắc chắn phải để cuối cùng, vì nó cần phải tìm hiểu thêm 
 nhiều thứ lắm mới có thể làm được)
+
+## Update kết quả
+
+### Lần 1 + Lần 2 (ngày 24/06/2022)
+- [x] Model được tải về máy và lưu ở thư mục `FirsModel_2`
+
+![img.png](docs/images/img_6.png)
+- [ ] Chạy Testing ở trên `Colab` đồng thời chạy `Custom dataset` của mình để xem nó thể hiện như thế nào. So sánh ở 2 tiêu chí: IoU ở tập test như thế nào 
+
+- [ ] Thể hiện của nó ở tập test và tập custom như thế nào, để so sánh ra bằng hình ảnh:
+
+`So sánh trên tập Custom Dataset` 
+
+| FirstModel                                                                                           | FirstModel_2                                                                                           |
+|------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|
+| ![](./UNet++/models/FirstModel/test_RealData/blend/im_2.jpg)                                         | ![](./UNet++/models/FirstModel_2/test_RealData/blend/im_2.jpg)                                         |        |
+| ![](./UNet++/models/FirstModel/test_RealData/blend/camera-kbvision-ptz-2022-02-25T17 50 00.000Z.jpg) | ![](./UNet++/models/FirstModel_2/test_RealData/blend/camera-kbvision-ptz-2022-02-25T17 50 00.000Z.jpg) |
+| ![](./UNet++/models/FirstModel/test_RealData/blend/camera-kbvision-ptz-2022-03-01T10 00 00.000Z.jpg) | ![](./UNet++/models/FirstModel_2/test_RealData/blend/camera-kbvision-ptz-2022-03-01T10 00 00.000Z.jpg) |
+| ![](./UNet++/models/FirstModel/test_RealData/blend/camera-kbvision-ptz-2022-03-01T10 10 00.000Z.jpg) | ![](./UNet++/models/FirstModel_2/test_RealData/blend/camera-kbvision-ptz-2022-03-01T10 10 00.000Z.jpg) |
+| ![](./UNet++/models/FirstModel/test_RealData/blend/camera-kbvision-ptz-2022-03-01T10 20 00.000Z.jpg) | ![](./UNet++/models/FirstModel_2/test_RealData/blend/camera-kbvision-ptz-2022-03-01T10 20 00.000Z.jpg) |
+| ![](./UNet++/models/FirstModel/test_RealData/blend/im_4.jpg)                                         | ![](./UNet++/models/FirstModel_2/test_RealData/blend/im_4.jpg)                                         |
+| ![](./UNet++/models/FirstModel/test_RealData/blend/KonTum_QuangNgai.jpg)                             | ![](./UNet++/models/FirstModel_2/test_RealData/blend/KonTum_QuangNgai.jpg)                             |
+| ![](./UNet++/models/FirstModel/test_RealData/blend/KonTum_ThanhMy.jpg)                               | ![](./UNet++/models/FirstModel_2/test_RealData/blend/KonTum_ThanhMy.jpg)                               |
+| ![](./UNet++/models/FirstModel/test_RealData/blend/ngu_hanh_son_2.jpg)                               | ![](./UNet++/models/FirstModel_2/test_RealData/blend/ngu_hanh_son_2.jpg)                               |
+| ![](./UNet++/models/FirstModel/test_RealData/blend/sample6.jpg)                                      | ![](./UNet++/models/FirstModel_2/test_RealData/blend/sample6.jpg)                                      |
+| ![](./UNet++/models/FirstModel/test_RealData/blend/sample8.jpg)                                      | ![](./UNet++/models/FirstModel_2/test_RealData/blend/sample8.jpg)                                      |
+| ![](./UNet++/models/FirstModel/test_RealData/blend/sample9.jpg)                                      | ![](./UNet++/models/FirstModel_2/test_RealData/blend/sample9.jpg)                                      |
+| ![](./UNet++/models/FirstModel/test_RealData/blend/sample11.jpg)                                     | ![](./UNet++/models/FirstModel_2/test_RealData/blend/sample11.jpg)                                     |
+| ![](./UNet++/models/FirstModel/test_RealData/blend/SunCoast-powerline-2.jpg)                         | ![](./UNet++/models/FirstModel_2/test_RealData/blend/SunCoast-powerline-2.jpg)                         |
+
