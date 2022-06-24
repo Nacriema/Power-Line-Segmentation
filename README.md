@@ -176,20 +176,20 @@ nhiều thứ lắm mới có thể làm được)
 
 `So sánh trên tập Custom Dataset` 
 
-| FirstModel                                                                                           | FirstModel_2                                                                                           |
-|------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|
-| ![](./UNet++/models/FirstModel/test_RealData/blend/im_2.jpg)                                         | ![](./UNet++/models/FirstModel_2/test_RealData/blend/im_2.jpg)                                         |        |
-| ![](./UNet++/models/FirstModel/test_RealData/blend/camera-kbvision-ptz-2022-02-25T17 50 00.000Z.jpg) | ![](./UNet++/models/FirstModel_2/test_RealData/blend/camera-kbvision-ptz-2022-02-25T17 50 00.000Z.jpg) |
-| ![](./UNet++/models/FirstModel/test_RealData/blend/camera-kbvision-ptz-2022-03-01T10 00 00.000Z.jpg) | ![](./UNet++/models/FirstModel_2/test_RealData/blend/camera-kbvision-ptz-2022-03-01T10 00 00.000Z.jpg) |
-| ![](./UNet++/models/FirstModel/test_RealData/blend/camera-kbvision-ptz-2022-03-01T10 10 00.000Z.jpg) | ![](./UNet++/models/FirstModel_2/test_RealData/blend/camera-kbvision-ptz-2022-03-01T10 10 00.000Z.jpg) |
-| ![](./UNet++/models/FirstModel/test_RealData/blend/camera-kbvision-ptz-2022-03-01T10 20 00.000Z.jpg) | ![](./UNet++/models/FirstModel_2/test_RealData/blend/camera-kbvision-ptz-2022-03-01T10 20 00.000Z.jpg) |
-| ![](./UNet++/models/FirstModel/test_RealData/blend/im_4.jpg)                                         | ![](./UNet++/models/FirstModel_2/test_RealData/blend/im_4.jpg)                                         |
-| ![](./UNet++/models/FirstModel/test_RealData/blend/KonTum_QuangNgai.jpg)                             | ![](./UNet++/models/FirstModel_2/test_RealData/blend/KonTum_QuangNgai.jpg)                             |
-| ![](./UNet++/models/FirstModel/test_RealData/blend/KonTum_ThanhMy.jpg)                               | ![](./UNet++/models/FirstModel_2/test_RealData/blend/KonTum_ThanhMy.jpg)                               |
-| ![](./UNet++/models/FirstModel/test_RealData/blend/ngu_hanh_son_2.jpg)                               | ![](./UNet++/models/FirstModel_2/test_RealData/blend/ngu_hanh_son_2.jpg)                               |
-| ![](./UNet++/models/FirstModel/test_RealData/blend/sample6.jpg)                                      | ![](./UNet++/models/FirstModel_2/test_RealData/blend/sample6.jpg)                                      |
-| ![](./UNet++/models/FirstModel/test_RealData/blend/sample8.jpg)                                      | ![](./UNet++/models/FirstModel_2/test_RealData/blend/sample8.jpg)                                      |
-| ![](./UNet++/models/FirstModel/test_RealData/blend/sample9.jpg)                                      | ![](./UNet++/models/FirstModel_2/test_RealData/blend/sample9.jpg)                                      |
-| ![](./UNet++/models/FirstModel/test_RealData/blend/sample11.jpg)                                     | ![](./UNet++/models/FirstModel_2/test_RealData/blend/sample11.jpg)                                     |
-| ![](./UNet++/models/FirstModel/test_RealData/blend/SunCoast-powerline-2.jpg)                         | ![](./UNet++/models/FirstModel_2/test_RealData/blend/SunCoast-powerline-2.jpg)                         |
+| FirstModel                                                                                        | FirstModel_2                                                                                        |
+|---------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
+| ![](./UNet++/models/FirstModel/test_RealData/blend/im_2.jpg)                                      | ![](./UNet++/models/FirstModel_2/test_RealData/blend/im_2.jpg)                                      |        |
+| ![](./UNet++/models/FirstModel/test_RealData/blend/camera-kbvision-ptz-2022-02-25175000000Z.jpg)  | ![](./UNet++/models/FirstModel_2/test_RealData/blend/camera-kbvision-ptz-2022-02-25T175000000Z.jpg) |
+| ![](./UNet++/models/FirstModel/test_RealData/blend/camera-kbvision-ptz-2022-03-01T100000000Z.jpg) | ![](./UNet++/models/FirstModel_2/test_RealData/blend/camera-kbvision-ptz-2022-03-01T100000000Z.jpg) |
+| ![](./UNet++/models/FirstModel/test_RealData/blend/camera-kbvision-ptz-2022-03-01T101000000Z.jpg) | ![](./UNet++/models/FirstModel_2/test_RealData/blend/camera-kbvision-ptz-2022-03-01T101000000Z.jpg) |
+| ![](./UNet++/models/FirstModel/test_RealData/blend/camera-kbvision-ptz-2022-03-01T102000000Z.jpg) | ![](./UNet++/models/FirstModel_2/test_RealData/blend/camera-kbvision-ptz-2022-03-01T102000000Z.jpg) |
+| ![](./UNet++/models/FirstModel/test_RealData/blend/im_4.jpg)                                      | ![](./UNet++/models/FirstModel_2/test_RealData/blend/im_4.jpg)                                      |
+| ![](./UNet++/models/FirstModel/test_RealData/blend/KonTum_QuangNgai.jpg)                          | ![](./UNet++/models/FirstModel_2/test_RealData/blend/KonTum_QuangNgai.jpg)                          |
+| ![](./UNet++/models/FirstModel/test_RealData/blend/KonTum_ThanhMy.jpg)                            | ![](./UNet++/models/FirstModel_2/test_RealData/blend/KonTum_ThanhMy.jpg)                            |
+| ![](./UNet++/models/FirstModel/test_RealData/blend/ngu_hanh_son_2.jpg)                            | ![](./UNet++/models/FirstModel_2/test_RealData/blend/ngu_hanh_son_2.jpg)                            |
+| ![](./UNet++/models/FirstModel/test_RealData/blend/sample6.jpg)                                   | ![](./UNet++/models/FirstModel_2/test_RealData/blend/sample6.jpg)                                   |
+| ![](./UNet++/models/FirstModel/test_RealData/blend/sample8.jpg)                                   | ![](./UNet++/models/FirstModel_2/test_RealData/blend/sample8.jpg)                                   |
+| ![](./UNet++/models/FirstModel/test_RealData/blend/sample9.jpg)                                   | ![](./UNet++/models/FirstModel_2/test_RealData/blend/sample9.jpg)                                   |
+| ![](./UNet++/models/FirstModel/test_RealData/blend/sample11.jpg)                                  | ![](./UNet++/models/FirstModel_2/test_RealData/blend/sample11.jpg)                                  |
+| ![](./UNet++/models/FirstModel/test_RealData/blend/SunCoast-powerline-2.jpg)                      | ![](./UNet++/models/FirstModel_2/test_RealData/blend/SunCoast-powerline-2.jpg)                      |
 
