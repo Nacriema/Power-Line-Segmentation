@@ -225,6 +225,17 @@ class Trainer:
         for epoch in range(self.start_epoch, self.n_epoches + 1):
             batch_start = self.start_batch if epoch == self.start_epoch else 1
 
+            # UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and
+            # later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.
+            # Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See
+            # more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+            # "https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate", UserWarning)
+
+            if self.scheduler_update_range == "epoch":
+                # When start with new epoch, call the update_scheduler to check whether the scheduler update the weight
+                if batch_start == 1:
+                    self.update_scheduler(epoch, batch=batch_start)
+
             for batch, (images, labels) in enumerate(self.train_loader, start=1):
                 if batch < batch_start:
                     continue
@@ -249,17 +260,6 @@ class Trainer:
                     # Using pytorchtools to customize the saving process. Use Early stopping !!!
                     # After self.run_val(), self.val_loss contains the data we need
                     self.log_val_metric(cur_iter, epoch, batch)
-
-            # UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and
-            # later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.
-            # Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See
-            # more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
-            # "https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate", UserWarning)
-
-            if self.scheduler_update_range == "epoch":
-                # When start with new epoch, call the update_scheduler to check whether the scheduler update the weight
-                if batch_start == 1:
-                    self.update_scheduler(epoch, batch=batch_start)
 
         self.print_and_log_info("Training run is over !")
 
