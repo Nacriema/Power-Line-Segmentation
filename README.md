@@ -195,12 +195,12 @@ nhiều thứ lắm mới có thể làm được)
 | ![](./UNet++/models/FirstModel/test_RealData/blend/SunCoast-powerline-2.jpg)                      | ![](./UNet++/models/FirstModel_2/test_RealData/blend/SunCoast-powerline-2.jpg)                      |
 
 ### Lần 3 (27/06/2022)
-- [ ] Lên Drive tải bản Lần 3 này về, clone thành một bản để backup dữ liệu. 
-- [ ] Sau đó mới chuyển sang Lần 4.
+- [x] Lên Drive tải bản Lần 3 này về, clone thành một bản để backup dữ liệu. 
+- [x] Sau đó mới chuyển sang mục Lần 4.
 
 ### Lần 4
 
 Sau khi sửa xong chỗ update bên trong code. Mình cần phải tải cái lần 3 về, lưu thành một bản copy nữa. Sau đó sửa 2 chỗ:
-1. Sửa trong file config trên Drive thành 17 
-2. Ở local mình dùng thằng `test_torchload.py` để sửa cái `milestones` của thằng Scheduler lại thành con 17 luôn.
-3. Bỏ lại lên trên Drive và tiếp tục train xem thử kết quả nó như thế nào 
+- [x] Sửa trong file config trên Drive thành 17 
+- [x] Ở local mình dùng thằng `test_torchload.py` để sửa cái `milestones` của thằng Scheduler lại thành con 17 luôn.
+- [x] Bỏ lại lên trên Drive và tiếp tục train xem thử kết quả nó như thế nào 
