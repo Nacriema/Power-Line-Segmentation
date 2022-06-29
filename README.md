@@ -154,7 +154,7 @@ không cân đối giữa các lớp với nhau. Đề xuất những hướng g
   - [ ] Sử dụng `FocalLoss` với `class weight`, `SoftDiceLoss`, hoặc là `JaccardLoss (IoU Loss)` 
 - [ ] Sử dụng `Optima` để tìm được bộ tham số khởi tạo chuẩn khi huấn luyện mô hình.
 - [ ] Thực hiện train trên Colab, chú ý những điều sau:
-  - [ ] Mỗi lần chạy lại train ta sẽ mất hết dữ liệu bên trong `train_metrics.tsv` và `val_metrics.tsv`.
+  - [x] Mỗi lần chạy lại train ta sẽ mất hết dữ liệu bên trong `train_metrics.tsv` và `val_metrics.tsv`.
   - [x] **Mình cần ghi lại giá trị val_loss nhỏ nhất trước đó đã lưu được tại best-save, thiết kế lại load check point và thêm việc truyền tham số vào khi khởi tạo EarlyStopping instance**. (Ok, vấn đề đã được giải quyết !)
     > ![img.png](docs/images/img_5.png)
   - [ ] Tiếp tục train trên colab !
@@ -179,7 +179,7 @@ nhiều thứ lắm mới có thể làm được)
 
 | FirstModel                                                                                        | FirstModel_2                                                                                        |
 |---------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
-| ![](./UNet++/models/FirstModel/test_RealData/blend/im_2.jpg)                                      | ![](./UNet++/models/FirstModel_2/test_RealData/blend/im_2.jpg)                                      |        |
+| ![](./UNet++/models/FirstModel/test_RealData/blend/im_2.jpg)                                      | ![](./UNet++/models/FirstModel_2/test_RealData/blend/im_2.jpg)                                      |        
 | ![](./UNet++/models/FirstModel/test_RealData/blend/camera-kbvision-ptz-2022-02-25175000000Z.jpg)  | ![](./UNet++/models/FirstModel_2/test_RealData/blend/camera-kbvision-ptz-2022-02-25T175000000Z.jpg) |
 | ![](./UNet++/models/FirstModel/test_RealData/blend/camera-kbvision-ptz-2022-03-01T100000000Z.jpg) | ![](./UNet++/models/FirstModel_2/test_RealData/blend/camera-kbvision-ptz-2022-03-01T100000000Z.jpg) |
 | ![](./UNet++/models/FirstModel/test_RealData/blend/camera-kbvision-ptz-2022-03-01T101000000Z.jpg) | ![](./UNet++/models/FirstModel_2/test_RealData/blend/camera-kbvision-ptz-2022-03-01T101000000Z.jpg) |
@@ -197,6 +197,20 @@ nhiều thứ lắm mới có thể làm được)
 ### Lần 3 (27/06/2022)
 - [x] Lên Drive tải bản Lần 3 này về, clone thành một bản để backup dữ liệu. 
 - [x] Sau đó mới chuyển sang mục Lần 4.
+- [ ] Chạy ở trên local này để đánh giá thử model Lần 3 này như thế nào (Ây da, cái này có vẻ không tốt cho lắm đâu, theo 
+cảm quan của mình thấy được là như vậy, nhưng để chắc chắn hơn thì phải chạy qua toàn bộ ảnh test để coi metric đạt được
+là bao nhiêu cái đã)
+
+* Test metric của lần 2
+
+![img.png](img.png)
+
+* Test metric của lần 3 
+
+![img.png](docs/images/img_7.png)
+
+**Vậy là lần 2 tốt hơn lần 3 á !!**
+
 
 ### Lần 4
 
@@ -204,3 +218,13 @@ Sau khi sửa xong chỗ update bên trong code. Mình cần phải tải cái l
 - [x] Sửa trong file config trên Drive thành 17 
 - [x] Ở local mình dùng thằng `test_torchload.py` để sửa cái `milestones` của thằng Scheduler lại thành con 17 luôn.
 - [x] Bỏ lại lên trên Drive và tiếp tục train xem thử kết quả nó như thế nào 
+- [x] Fail rồi, mô hình nó vẫn không chịu cập nhật learning rate khi train nữa ... 
+- [ ] Thử sử dụng `LovasLoss` để tiếp tục train xem sao ! Nếu không được nữa thì phải chuyển sang hàm mục tiêu mới !!!
+
+
+## Model Loại 2 (SecondModel): Cùng một kiến trúc, nhưng training sử dụng Jaccard Loss
+- [ ] Tìm hiều về IoU loss, và cách người ta làm cho chúng trở nên `differentiable`. 
+- [ ] Link để ngồi đọc: 
+  - [StackOverflow discussion](https://stackoverflow.com/questions/40475246/why-does-one-not-use-iou-for-training)
+  - [Paper](https://arxiv.org/pdf/1608.01471.pdf)
+  - [Pytorch's Implementation](https://github.com/kevinzakka/pytorch-goodies/blob/master/losses.py)
