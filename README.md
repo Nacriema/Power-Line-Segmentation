@@ -203,7 +203,7 @@ là bao nhiêu cái đã)
 
 * Test metric của lần 2
 
-![img.png](img.png)
+![img.png](docs/images/img_8.png)
 
 * Test metric của lần 3 
 
