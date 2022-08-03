@@ -221,6 +221,12 @@ Sau khi sửa xong chỗ update bên trong code. Mình cần phải tải cái l
 - [x] Fail rồi, mô hình nó vẫn không chịu cập nhật learning rate khi train nữa ... 
 - [ ] Thử sử dụng `LovasLoss` để tiếp tục train xem sao ! Nếu không được nữa thì phải chuyển sang hàm mục tiêu mới !!!
 
+## Ưu tiên theo hướng xử lý như trong bài báo đề xuất đã đưa, đặc biệt là sử dụng thử hàm từ [28]
+- [ ] Đọc lại bài báo, chú ý references:
+  - [27 - A new deep learning
+  architecture for detection of long linear infrastructure](http://www.mva-org.jp/Proceedings/2017USB/papers/06-05.pdf) 
+  - [28 - A novel focal
+  phi loss for power line segmentation with auxiliary classifier u-net](https://sci-hub.se/10.3390/s21082803)
 
 ## Model Loại 2 (SecondModel): Cùng một kiến trúc, nhưng training sử dụng Jaccard Loss
 - [ ] Tìm hiều về IoU loss, và cách người ta làm cho chúng trở nên `differentiable`. 
