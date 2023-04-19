@@ -234,3 +234,10 @@ Sau khi sửa xong chỗ update bên trong code. Mình cần phải tải cái l
   - [StackOverflow discussion](https://stackoverflow.com/questions/40475246/why-does-one-not-use-iou-for-training)
   - [Paper](https://arxiv.org/pdf/1608.01471.pdf)
   - [Pytorch's Implementation](https://github.com/kevinzakka/pytorch-goodies/blob/master/losses.py)
+
+## TASKS
+- [ ] Convert the `Readme.md` into English version
+- [ ] Implement the loss function that the author has suggest in the `PLGan`, compare the result with the one the author reported
+- [ ] These tasks will be completed on this weekend (22-23 April)
+
+Have a nice day !!!
