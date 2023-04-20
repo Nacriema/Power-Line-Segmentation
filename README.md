@@ -240,4 +240,8 @@ Sau khi sửa xong chỗ update bên trong code. Mình cần phải tải cái l
 - [ ] Implement the loss function that the author has suggest in the `PLGan`, compare the result with the one the author reported
 - [ ] These tasks will be completed on this weekend (22-23 April)
 
+## MORE APPROACHES
+- [DUFormer : A Novel Architecture for Power Line Segmentation of Aerial Images](https://arxiv.org/pdf/2304.05821.pdf)
+
+
 Have a nice day !!!
