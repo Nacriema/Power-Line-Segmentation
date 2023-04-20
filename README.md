@@ -242,6 +242,6 @@ Sau khi sửa xong chỗ update bên trong code. Mình cần phải tải cái l
 
 ## MORE APPROACHES
 - [DUFormer : A Novel Architecture for Power Line Segmentation of Aerial Images](https://arxiv.org/pdf/2304.05821.pdf)
-
+- [Automatic High Resolution Wire Segmentation and Removal](https://arxiv.org/pdf/2304.00221.pdf)
 
 Have a nice day !!!
