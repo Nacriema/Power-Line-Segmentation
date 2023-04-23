@@ -25,8 +25,8 @@ Result for each model will be updated in this part
 
 ### 4. Improvements
 
-All ideas to improve the performance of the segmentation will be update [here](./docs/md/ways_to_improve.md)
-
+- All ideas to improve the performance of the segmentation will be update [here](./docs/md/ways_to_improve.md)
+- Any new loss functions used for segmentation also will be updated at [my loss functions repo](https://github.com/Nacriema/Loss-Functions-For-Semantic-Segmentation)
 
 ## TODO: 
 - [x] Restructure the project repo
