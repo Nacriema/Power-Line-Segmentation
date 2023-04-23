@@ -30,5 +30,5 @@ All ideas to improve the performance of the segmentation will be update [here](.
 
 ## TODO: 
 - [x] Restructure the project repo
-
-
+- [ ] Implement the loss function that the author have used in [PLGAN paper](https://arxiv.org/abs/2204.07243) 
+- [ ] Change the language into English
