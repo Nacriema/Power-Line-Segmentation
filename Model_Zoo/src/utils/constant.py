@@ -1,0 +1,33 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+"""
+Created on Jun 20 19:21:36 2022
+
+@author: Nacriema
+
+Refs:
+
+"""
+OCR_GROUND_TRUTH_FMT = '{}_ocr.{}'
+SEG_GROUND_TRUTH_FMT = '{}_Labels.{}'
+MODEL_FILE = 'model.pkl'
+
+# COLOR
+BACKGROUND_COLOR = (0, 0, 0)  # Black
+POWER_LINE_COLOR = (255, 255, 255)  # WHITE
+
+# LABEL
+BACKGROUND_LABEL = 0
+POWER_LINE_LABEL = 1
+
+# MAPPINGS
+COLOR_TO_LABEL_MAPPING = {
+    BACKGROUND_COLOR: BACKGROUND_LABEL,
+    POWER_LINE_COLOR: POWER_LINE_LABEL
+}
+
+LABEL_TO_COLOR_MAPPING = {
+    BACKGROUND_LABEL: BACKGROUND_COLOR,
+    POWER_LINE_LABEL: POWER_LINE_COLOR
+}
