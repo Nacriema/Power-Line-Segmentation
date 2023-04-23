@@ -1,4 +1,6 @@
-# Mục đích
+# Powerline Segmentation using UNet++
+
+## 1. TTPLA Dataset
 
 Cấu trúc thư mục hiện tại mình đang có: 
 
@@ -40,8 +42,8 @@ Kết quả đạt được:
 
 | Original                                        | Sample                                                     | Mask (Power lines)                                        | 
 |-------------------------------------------------|------------------------------------------------------------|-----------------------------------------------------------|
-| ![](./TTPLA_Processing/data_sample/04_585.jpg)  | ![](./TTPLA_Processing/processing_code/04_585_Sample.png)  | ![](./TTPLA_Processing/processing_code/04_585_Label.png)  | 
-| ![](./TTPLA_Processing/data_sample/04_2220.jpg) | ![](./TTPLA_Processing/processing_code/04_2220_Sample.png) | ![](./TTPLA_Processing/processing_code/04_2220_Label.png) |
+| ![](../../TTPLA_Processing/data_sample/04_585.jpg)  | ![](../../TTPLA_Processing/processing_code/04_585_Sample.png)  | ![](../../TTPLA_Processing/processing_code/04_585_Label.png)  | 
+| ![](../../TTPLA_Processing/data_sample/04_2220.jpg) | ![](../../TTPLA_Processing/processing_code/04_2220_Sample.png) | ![](../../TTPLA_Processing/processing_code/04_2220_Label.png) |
 
 - [x] Kiểm tra label tạo ra được có đúng chuẩn hay không ? Tức là đọc dữ liệu ra là được bao nhiêu, mình expect là 0, 1. Thực sự thì dữ liệu đọc ra được
 là RGB value với line: (255, 255, 255), non-line: (0, 0, 0). Và thông qua phương thức map từ màu sang class trong DataSet của docExtractor thì sẽ chuyển sang
@@ -89,14 +91,14 @@ Vậy là trong dữ liệu dư thừa ra 8 bản ghi không thuộc loại nào
 - [x] Xây dựng mô hình cho cái thuật toán PowerLine segmentation. Tìm kiếm model thực hiện tốt điều này. Mình sẽ chọn 
 UNET++ (backbone Resnet-34) 
 
-![img.png](docs/images/img.png)
+![img.png](../images/img.png)
 
 - [x] Xây dựng DataLoader cho segmentation task, kiểm tra chúng.
 - [x] Viết script train model.
 - [x] Sau khi đẩy dữ liệu full lên trên Drive, thì mình tính toán giá trị trung bình mean và std của toàn bộ dữ liệu trên đó thử:
 Kết quả sẽ được note ở đây: 
 
-![img_1.png](docs/images/img_1.png)
+![img_1.png](../images/img_1.png)
 
 > Kết quả: 
 > * Mean: tensor([0.4616, 0.4506, 0.4154]) 
@@ -119,13 +121,13 @@ cả các trường như thằng `docExtractor` vậy:
 > nó báo cần kết thúc thì ta kết thúc và break vòng lặp train.
 
 - [x] Kiểm tra mật độ phân phối dữ liệu trên toàn bộ data set, dữ liệu của mình là cực kỳ `imbalance`: 
-![img_2.png](docs/images/img_2.png)
+![img_2.png](../images/img_2.png)
 ```text
 RESULT: tensor([820755889,  17900111])
 WEIGHT (1./RESULT): tensor([1.2184e-09, 5.5866e-08]) 
 ```
 - [x] Test thử việc truyền weight class vào trong `CrossEntropyLoss`, kết quả có vẻ khả quan đấy !
-![img_3.png](docs/images/img_3.png)
+![img_3.png](../images/img_3.png)
 - [ ] Hiệu chỉnh code lần cuối cùng rồi đẩy code hoàn chỉnh lên trên đó, sau đó thực hiện train model với full-data
   - [x] Thêm phần resume training 
   - [x] Thêm vào logging, cải thiện format logging sao cho nó dễ đọc nhất có thể (Gợi ý sử dụng kiểu log message của PyImage Search)
@@ -144,7 +146,7 @@ tạo biến record bên trong `EaryStopping`.
   - [x] Viết thêm `.gitignore` để tránh trường hợp đẩy file có dung lượng lớn lên lên trên Github. 
   - [ ] Tìm hiểu thêm một tính năng nào đó hay ho hỗ trợ code từ github (Ví dụ: Bot, CodeCoverage, ... ) để cái thiện code. (Đã thực hiện với CodeCoverage,...)
     - [x] Đã biết cách sử dụng `Code Coverage` để kiểm tra độ bao phủ của code trong một lần chạy fullflow. 
-        > ![img.png](docs/images/img_4.png)
+        > ![img.png](../images/img_4.png)
   - [x] Viết thêm `ArgumentParser` vào `trainer.py` script
 - [x] Thực hiện một số tính toán đơn giản dựa trên bộ dữ liệu để có thể có được cấu hình ok ban đầu cho file config: 
   > Mình đã note sẵn trong file `first_try.yml` 
@@ -156,7 +158,7 @@ không cân đối giữa các lớp với nhau. Đề xuất những hướng g
 - [ ] Thực hiện train trên Colab, chú ý những điều sau:
   - [x] Mỗi lần chạy lại train ta sẽ mất hết dữ liệu bên trong `train_metrics.tsv` và `val_metrics.tsv`.
   - [x] **Mình cần ghi lại giá trị val_loss nhỏ nhất trước đó đã lưu được tại best-save, thiết kế lại load check point và thêm việc truyền tham số vào khi khởi tạo EarlyStopping instance**. (Ok, vấn đề đã được giải quyết !)
-    > ![img.png](docs/images/img_5.png)
+    > ![img.png](../images/img_5.png)
   - [ ] Tiếp tục train trên colab !
   - [ ] Vấn đề hiện tại với model của mình là train hoài mà nó không xuống được nữa, mặc dù nó đang làm khá tốt. Mình nên 
 cân nhắc việc `FineTune` với cái `REDUCELRONPLATEAU` của Pytorch để tự động điều chỉnh giá trị learning rate khi mà thấy không ổn. 
@@ -169,7 +171,7 @@ nhiều thứ lắm mới có thể làm được)
 ### Lần 1 + Lần 2 (ngày 24/06/2022)
 - [x] Model được tải về máy và lưu ở thư mục `FirsModel_2`
 
-![img.png](docs/images/img_6.png)
+![img.png](../images/img_6.png)
 
 - [ ] Chạy Testing ở trên `Colab` đồng thời chạy `Custom dataset` của mình để xem nó thể hiện như thế nào. So sánh ở 2 tiêu chí: IoU ở tập test như thế nào 
 
@@ -179,20 +181,20 @@ nhiều thứ lắm mới có thể làm được)
 
 | FirstModel                                                                                        | FirstModel_2                                                                                        |
 |---------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
-| ![](./UNet++/models/FirstModel/test_RealData/blend/im_2.jpg)                                      | ![](./UNet++/models/FirstModel_2/test_RealData/blend/im_2.jpg)                                      |        
-| ![](./UNet++/models/FirstModel/test_RealData/blend/camera-kbvision-ptz-2022-02-25175000000Z.jpg)  | ![](./UNet++/models/FirstModel_2/test_RealData/blend/camera-kbvision-ptz-2022-02-25T175000000Z.jpg) |
-| ![](./UNet++/models/FirstModel/test_RealData/blend/camera-kbvision-ptz-2022-03-01T100000000Z.jpg) | ![](./UNet++/models/FirstModel_2/test_RealData/blend/camera-kbvision-ptz-2022-03-01T100000000Z.jpg) |
-| ![](./UNet++/models/FirstModel/test_RealData/blend/camera-kbvision-ptz-2022-03-01T101000000Z.jpg) | ![](./UNet++/models/FirstModel_2/test_RealData/blend/camera-kbvision-ptz-2022-03-01T101000000Z.jpg) |
-| ![](./UNet++/models/FirstModel/test_RealData/blend/camera-kbvision-ptz-2022-03-01T102000000Z.jpg) | ![](./UNet++/models/FirstModel_2/test_RealData/blend/camera-kbvision-ptz-2022-03-01T102000000Z.jpg) |
-| ![](./UNet++/models/FirstModel/test_RealData/blend/im_4.jpg)                                      | ![](./UNet++/models/FirstModel_2/test_RealData/blend/im_4.jpg)                                      |
-| ![](./UNet++/models/FirstModel/test_RealData/blend/KonTum_QuangNgai.jpg)                          | ![](./UNet++/models/FirstModel_2/test_RealData/blend/KonTum_QuangNgai.jpg)                          |
-| ![](./UNet++/models/FirstModel/test_RealData/blend/KonTum_ThanhMy.jpg)                            | ![](./UNet++/models/FirstModel_2/test_RealData/blend/KonTum_ThanhMy.jpg)                            |
-| ![](./UNet++/models/FirstModel/test_RealData/blend/ngu_hanh_son_2.jpg)                            | ![](./UNet++/models/FirstModel_2/test_RealData/blend/ngu_hanh_son_2.jpg)                            |
-| ![](./UNet++/models/FirstModel/test_RealData/blend/sample6.jpg)                                   | ![](./UNet++/models/FirstModel_2/test_RealData/blend/sample6.jpg)                                   |
-| ![](./UNet++/models/FirstModel/test_RealData/blend/sample8.jpg)                                   | ![](./UNet++/models/FirstModel_2/test_RealData/blend/sample8.jpg)                                   |
-| ![](./UNet++/models/FirstModel/test_RealData/blend/sample9.jpg)                                   | ![](./UNet++/models/FirstModel_2/test_RealData/blend/sample9.jpg)                                   |
-| ![](./UNet++/models/FirstModel/test_RealData/blend/sample11.jpg)                                  | ![](./UNet++/models/FirstModel_2/test_RealData/blend/sample11.jpg)                                  |
-| ![](./UNet++/models/FirstModel/test_RealData/blend/SunCoast-powerline-2.jpg)                      | ![](./UNet++/models/FirstModel_2/test_RealData/blend/SunCoast-powerline-2.jpg)                      |
+| ![](../results/unet_pp/FirstModel/test_RealData/blend/im_2.jpg)                                      | ![](../results/unet_pp/FirstModel_2/test_RealData/blend/im_2.jpg)                                      |        
+| ![](../results/unet_pp/FirstModel/test_RealData/blend/camera-kbvision-ptz-2022-02-25175000000Z.jpg)  | ![](../results/unet_pp/FirstModel_2/test_RealData/blend/camera-kbvision-ptz-2022-02-25T175000000Z.jpg) |
+| ![](../results/unet_pp/FirstModel/test_RealData/blend/camera-kbvision-ptz-2022-03-01T100000000Z.jpg) | ![](../results/unet_pp/FirstModel_2/test_RealData/blend/camera-kbvision-ptz-2022-03-01T100000000Z.jpg) |
+| ![](../results/unet_pp/FirstModel/test_RealData/blend/camera-kbvision-ptz-2022-03-01T101000000Z.jpg) | ![](../results/unet_pp/FirstModel_2/test_RealData/blend/camera-kbvision-ptz-2022-03-01T101000000Z.jpg) |
+| ![](../results/unet_pp/FirstModel/test_RealData/blend/camera-kbvision-ptz-2022-03-01T102000000Z.jpg) | ![](../results/unet_pp/FirstModel_2/test_RealData/blend/camera-kbvision-ptz-2022-03-01T102000000Z.jpg) |
+| ![](../results/unet_pp/FirstModel/test_RealData/blend/im_4.jpg)                                      | ![](../results/unet_pp/FirstModel_2/test_RealData/blend/im_4.jpg)                                      |
+| ![](../results/unet_pp/FirstModel/test_RealData/blend/KonTum_QuangNgai.jpg)                          | ![](../results/unet_pp/FirstModel_2/test_RealData/blend/KonTum_QuangNgai.jpg)                          |
+| ![](../results/unet_pp/FirstModel/test_RealData/blend/KonTum_ThanhMy.jpg)                            | ![](../results/unet_pp/FirstModel_2/test_RealData/blend/KonTum_ThanhMy.jpg)                            |
+| ![](../results/unet_pp/FirstModel/test_RealData/blend/ngu_hanh_son_2.jpg)                            | ![](../results/unet_pp/FirstModel_2/test_RealData/blend/ngu_hanh_son_2.jpg)                            |
+| ![](../results/unet_pp/FirstModel/test_RealData/blend/sample6.jpg)                                   | ![](../results/unet_pp/FirstModel_2/test_RealData/blend/sample6.jpg)                                   |
+| ![](../results/unet_pp/FirstModel/test_RealData/blend/sample8.jpg)                                   | ![](../results/unet_pp/FirstModel_2/test_RealData/blend/sample8.jpg)                                   |
+| ![](../results/unet_pp/FirstModel/test_RealData/blend/sample9.jpg)                                   | ![](../results/unet_pp/FirstModel_2/test_RealData/blend/sample9.jpg)                                   |
+| ![](../results/unet_pp/FirstModel/test_RealData/blend/sample11.jpg)                                  | ![](../results/unet_pp/FirstModel_2/test_RealData/blend/sample11.jpg)                                  |
+| ![](../results/unet_pp/FirstModel/test_RealData/blend/SunCoast-powerline-2.jpg)                      | ![](../results/unet_pp/FirstModel_2/test_RealData/blend/SunCoast-powerline-2.jpg)                      |
 
 ### Lần 3 (27/06/2022)
 - [x] Lên Drive tải bản Lần 3 này về, clone thành một bản để backup dữ liệu. 
@@ -203,11 +205,11 @@ là bao nhiêu cái đã)
 
 * Test metric của lần 2
 
-![img.png](docs/images/img_8.png)
+![img.png](../images/img_8.png)
 
 * Test metric của lần 3 
 
-![img.png](docs/images/img_7.png)
+![img.png](../images/img_7.png)
 
 **Vậy là lần 2 tốt hơn lần 3 á !!**
 
@@ -220,31 +222,3 @@ Sau khi sửa xong chỗ update bên trong code. Mình cần phải tải cái l
 - [x] Bỏ lại lên trên Drive và tiếp tục train xem thử kết quả nó như thế nào 
 - [x] Fail rồi, mô hình nó vẫn không chịu cập nhật learning rate khi train nữa ... 
 - [ ] Thử sử dụng `LovasLoss` để tiếp tục train xem sao ! Nếu không được nữa thì phải chuyển sang hàm mục tiêu mới !!!
-
-## Ưu tiên theo hướng xử lý như trong bài báo đề xuất đã đưa, đặc biệt là sử dụng thử hàm từ [28]
-- [ ] Đọc lại bài báo, chú ý references:
-  - [27 - A new deep learning
-  architecture for detection of long linear infrastructure](http://www.mva-org.jp/Proceedings/2017USB/papers/06-05.pdf) 
-  - [28 - A novel focal
-  phi loss for power line segmentation with auxiliary classifier u-net](https://sci-hub.se/10.3390/s21082803)
-
-## Model Loại 2 (SecondModel): Cùng một kiến trúc, nhưng training sử dụng Jaccard Loss
-- [ ] Tìm hiều về IoU loss, và cách người ta làm cho chúng trở nên `differentiable`. 
-- [ ] Link để ngồi đọc: 
-  - [StackOverflow discussion](https://stackoverflow.com/questions/40475246/why-does-one-not-use-iou-for-training)
-  - [Paper](https://arxiv.org/pdf/1608.01471.pdf)
-  - [Pytorch's Implementation](https://github.com/kevinzakka/pytorch-goodies/blob/master/losses.py)
-
-## TASKS
-- [ ] Convert the `Readme.md` into English version
-- [ ] Implement the loss function that the author has suggest in the `PLGan`, compare the result with the one the author reported
-- [ ] These tasks will be completed on this weekend (22-23 April)
-
-## MORE APPROACHES
-- [DUFormer : A Novel Architecture for Power Line Segmentation of Aerial Images](https://arxiv.org/pdf/2304.05821.pdf)
-- [Automatic High Resolution Wire Segmentation and Removal](https://arxiv.org/pdf/2304.00221.pdf)
-
-## TODO: 
-- [ ] Restructure the project repo
-
-
